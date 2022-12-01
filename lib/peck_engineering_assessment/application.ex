@@ -15,9 +15,10 @@ defmodule PeckEngineeringAssessment.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PeckEngineeringAssessment.PubSub},
       # Start the Endpoint (http/https)
-      PeckEngineeringAssessmentWeb.Endpoint
+      PeckEngineeringAssessmentWeb.Endpoint,
       # Start a worker by calling: PeckEngineeringAssessment.Worker.start_link(arg)
       # {PeckEngineeringAssessment.Worker, arg}
+      {Finch, name: FinchHttpClient}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

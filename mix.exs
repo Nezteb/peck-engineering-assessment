@@ -7,10 +7,33 @@ defmodule PeckEngineeringAssessment.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [
+        ignore_modules: [
+          # These are all the modules that the boilerplate Phoenix app started with,
+          # so we won't care about coverage for these for now.
+          PeckEngineeringAssessmentWeb,
+          PeckEngineeringAssessmentWeb.ErrorHelpers,
+          PeckEngineeringAssessment.DataCase,
+          PeckEngineeringAssessment.Repo,
+          PeckEngineeringAssessmentWeb.LayoutView,
+          PeckEngineeringAssessmentWeb.PageView,
+          PeckEngineeringAssessmentWeb.Router,
+          PeckEngineeringAssessmentWeb.ErrorView,
+          PeckEngineeringAssessment.Application,
+          PeckEngineeringAssessmentWeb.Telemetry,
+          PeckEngineeringAssessment,
+          PeckEngineeringAssessment.Mailer,
+          PeckEngineeringAssessmentWeb.ConnCase,
+          PeckEngineeringAssessmentWeb.Endpoint,
+          PeckEngineeringAssessmentWeb.Gettext,
+          PeckEngineeringAssessmentWeb.PageController,
+          PeckEngineeringAssessmentWeb.Router.Helpers
+        ]
+      ]
     ]
   end
 
@@ -48,7 +71,13 @@ defmodule PeckEngineeringAssessment.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:open_api_spex, "~> 3.13"},
+      {:tesla, "~> 1.4"},
+      {:finch, "~> 0.13"},
+      {:paginator, "~> 1.1.0"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 
@@ -63,8 +92,9 @@ defmodule PeckEngineeringAssessment.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test --cover"],
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      lint: ["credo --strict", "dialyzer --quiet"]
     ]
   end
 end

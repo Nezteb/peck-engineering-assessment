@@ -13,7 +13,11 @@ config :peck_engineering_assessment,
 # Configures the endpoint
 config :peck_engineering_assessment, PeckEngineeringAssessmentWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: PeckEngineeringAssessmentWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [
+    view: PeckEngineeringAssessmentWeb.ErrorView,
+    accepts: ~w(html json),
+    layout: false
+  ],
   pubsub_server: PeckEngineeringAssessment.PubSub,
   live_view: [signing_salt: "sVl5GUx/"]
 
@@ -24,7 +28,8 @@ config :peck_engineering_assessment, PeckEngineeringAssessmentWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :peck_engineering_assessment, PeckEngineeringAssessment.Mailer, adapter: Swoosh.Adapters.Local
+config :peck_engineering_assessment, PeckEngineeringAssessment.Mailer,
+  adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
@@ -46,6 +51,8 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :tesla, :adapter, {Tesla.Adapter.Finch, name: FinchHttpClient}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -10,6 +10,11 @@ TODO:
 - Basic CRUD LiveView UI for foodtrucks
 - Tests with `ExVCR`
 
+Rules for myself: (no promises though due to time)
+- Run `mix format && mix lint && mix test` often
+- Try not to commit anything that fails `mix lint` or `mix test`
+- Shoot for a test coverage of 80% or higher for _new_ code
+
 The original assessment README is below:
 
 # Engineering Challenge
