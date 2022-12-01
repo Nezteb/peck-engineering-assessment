@@ -28,7 +28,8 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckController do
   def update(conn, %{"id" => id, "food_truck" => food_truck_params}) do
     food_truck = FoodTrucks.get_food_truck!(id)
 
-    with {:ok, %FoodTruck{} = food_truck} <- FoodTrucks.update_food_truck(food_truck, food_truck_params) do
+    with {:ok, %FoodTruck{} = food_truck} <-
+           FoodTrucks.update_food_truck(food_truck, food_truck_params) do
       render(conn, "show.json", food_truck: food_truck)
     end
   end

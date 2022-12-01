@@ -14,16 +14,10 @@ defmodule PeckEngineeringAssessmentWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PeckEngineeringAssessmentWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
+  scope "/api", PeckEngineeringAssessmentWeb do
+    pipe_through :api
+    resources "/food_trucks", FoodTruckController, except: [:new, :edit]
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PeckEngineeringAssessmentWeb do
-  #   pipe_through :api
-  # end
 
   # Enables LiveDashboard only for development
   #

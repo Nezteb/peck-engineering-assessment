@@ -67,7 +67,37 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
     y: "some updated y",
     zip_codes: "some updated zip_codes"
   }
-  @invalid_attrs %{address: nil, applicant: nil, approved: nil, block: nil, blocklot: nil, cnn: nil, days_hours: nil, expiration_date: nil, facility_type: nil, fire_prevention_districts: nil, food_items: nil, latitude: nil, location: nil, location_description: nil, location_id: nil, longitude: nil, lot: nil, neighborhoods: nil, noi_sent: nil, permit: nil, police_districts: nil, prior_permit: nil, received: nil, schedule: nil, status: nil, supervisor_districts: nil, x: nil, y: nil, zip_codes: nil}
+  @invalid_attrs %{
+    address: nil,
+    applicant: nil,
+    approved: nil,
+    block: nil,
+    blocklot: nil,
+    cnn: nil,
+    days_hours: nil,
+    expiration_date: nil,
+    facility_type: nil,
+    fire_prevention_districts: nil,
+    food_items: nil,
+    latitude: nil,
+    location: nil,
+    location_description: nil,
+    location_id: nil,
+    longitude: nil,
+    lot: nil,
+    neighborhoods: nil,
+    noi_sent: nil,
+    permit: nil,
+    police_districts: nil,
+    prior_permit: nil,
+    received: nil,
+    schedule: nil,
+    status: nil,
+    supervisor_districts: nil,
+    x: nil,
+    y: nil,
+    zip_codes: nil
+  }
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -130,8 +160,13 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
   describe "update food_truck" do
     setup [:create_food_truck]
 
-    test "renders food_truck when data is valid", %{conn: conn, food_truck: %FoodTruck{id: id} = food_truck} do
-      conn = put(conn, Routes.food_truck_path(conn, :update, food_truck), food_truck: @update_attrs)
+    test "renders food_truck when data is valid", %{
+      conn: conn,
+      food_truck: %FoodTruck{id: id} = food_truck
+    } do
+      conn =
+        put(conn, Routes.food_truck_path(conn, :update, food_truck), food_truck: @update_attrs)
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.food_truck_path(conn, :show, id))
@@ -171,7 +206,9 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, food_truck: food_truck} do
-      conn = put(conn, Routes.food_truck_path(conn, :update, food_truck), food_truck: @invalid_attrs)
+      conn =
+        put(conn, Routes.food_truck_path(conn, :update, food_truck), food_truck: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

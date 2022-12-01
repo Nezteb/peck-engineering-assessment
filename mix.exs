@@ -20,7 +20,6 @@ defmodule PeckEngineeringAssessment.MixProject do
           PeckEngineeringAssessment.DataCase,
           PeckEngineeringAssessment.Repo,
           PeckEngineeringAssessmentWeb.LayoutView,
-          PeckEngineeringAssessmentWeb.PageView,
           PeckEngineeringAssessmentWeb.Router,
           PeckEngineeringAssessmentWeb.ErrorView,
           PeckEngineeringAssessment.Application,
@@ -30,8 +29,9 @@ defmodule PeckEngineeringAssessment.MixProject do
           PeckEngineeringAssessmentWeb.ConnCase,
           PeckEngineeringAssessmentWeb.Endpoint,
           PeckEngineeringAssessmentWeb.Gettext,
-          PeckEngineeringAssessmentWeb.PageController,
-          PeckEngineeringAssessmentWeb.Router.Helpers
+          PeckEngineeringAssessmentWeb.Router.Helpers,
+          PeckEngineeringAssessmentWeb.ChangesetView,
+          PeckEngineeringAssessmentWeb.FallbackController
         ]
       ]
     ]
