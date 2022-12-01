@@ -15,7 +15,108 @@ Rules for myself: (no promises though due to time)
 - Try not to commit anything that fails `mix lint` or `mix test`
 - Shoot for a test coverage of 80% or higher for _new_ code
 
-The original assessment README is below:
+## Food Truck Schema
+
+#### CSV Headers
+
+- locationid
+  - We'll use this as our integer primary key.
+- Applicant
+  - String.
+- FacilityType
+  - Could be an enum (`Push Cart`, `Truck`), but we'll leave it as a string for now.
+- cnn
+  - Dunno what this. It might be safest to store as a string, but it always consists of integers so we'll keep it an integer.
+- LocationDescription
+  - String.
+- Address
+  - String.
+- blocklot
+  - A concatenation of `block` and `lot`.
+- block
+  - Mostly rows are only integers but sometimes contains letters, so we'll store it as a string.
+- lot
+  - Mostly rows are only integers but sometimes contains letters, so we'll store it as a string.
+- permit
+  - String.
+- Status
+  - Could be an enum (`APPROVED`, `REQUESTED`, `EXPIRED`, `SUSPEND`, `ISSUED`), but we'll leave it as a string for now.
+- FoodItems
+  - String that we can maybe parse/split later.
+- X
+  - A decimal, but we'll store it as a string for now.
+- Y
+  - A decimal, but we'll store it as a string for now.
+- Latitude
+  - A decimal, but we'll store it as a string for now.
+- Longitude
+  - A decimal, but we'll store it as a string for now.
+- Schedule
+  - A URL that we'll store as a string.
+- dayshours
+  - String.
+- NOISent
+  - Always empty, dunno what this is? String for now.
+- Approved
+  - A datetime, but the time is always midnight.
+- Received
+  - A date (without time), but we'll store it as a datetime for extensibility.
+- PriorPermit
+  - Only ever a 0 or a 1, so we could use a boolean but just in case let's keep it an integer.
+- ExpirationDate
+  - A datetime, but the time is always midnight.
+- Location
+  - A tuple of the latitude and longitude, but we'll keep it as a string.
+- Fire Prevention Districts
+  - A district number. Integer seems obvious, but we'll keep it a string because it's similar to a zip code and probably won't have any math done on it.
+- Police Districts
+  - Similar to the fire prevention districts, so a string.
+- Supervisor Districts
+  - Similar to the fire prevention districts, so a string
+- Zip Codes
+  - Strings, just in case we ever want to support non-US postal codes. Also zip codes (which look like integers) never have math done on theem.
+- Neighborhoods (old)
+  - Similar to the fire prevention districts, so a string. Labelled as "old" but we'll keep it for now.
+
+To set up the schema, we'll run:
+```bash
+mix phx.gen.json Food FoodTruck food_trucks \
+    location_id:integer \
+    applicant:string \
+    facility_type:string \
+    cnn:integer \
+    location_description:string \
+    address:string \
+    blocklot:string \
+    block:string \
+    lot:string \
+    permit:string \
+    status:string \
+    food_items:string \
+    x:string \
+    y:string \
+    latitude:string \
+    longitude:string \
+    schedule:string \
+    days_hours:string \
+    noi_sent:string \
+    approved:datetime \
+    received:datetime \
+    prior_permit:integer \
+    expiration_date:datetime \
+    location:string \
+    fire_prevention_districts:string \
+    police_districts:string \
+    supervisor_districts:string \
+    zip_codes:string \
+    neighborhoods:string
+```
+
+`facility_type` and `status` could be enums, but we'll leave them as strings for now.
+
+---
+
+# The original assessment README:
 
 # Engineering Challenge
 
