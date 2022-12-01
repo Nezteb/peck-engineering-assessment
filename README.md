@@ -2,7 +2,7 @@
 
 TODO:
 - ✅ Boilerplate Phoenix app
-- 🔘 Schema/migrations for food truck data (Postgres)
+- ✅ Schema/migrations for food truck data (Postgres)
 - 🔘 Tesla API client for food truck data
 - 🔘 CSV importer (ignoring duplicates)
 - 🔘 REST resource endpoints for foodtrucks
