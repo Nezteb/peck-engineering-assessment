@@ -6,9 +6,9 @@ TODO:
 - ✅ Tesla API client for food truck data
 - ✅ CSV importer (ignoring duplicates)
 - ✅ REST resource endpoints for foodtrucks
+- ✅ Tests with `exvcr`
 - 🔘 OpenAPI spec with `open_api_spex`
 - 🔘 Basic CRUD LiveView UI for foodtrucks
-- 🔘 Tests with `exvcr`
 
 Rules for myself: (no promises though due to time)
 - Run `mix format && mix lint && mix test` often

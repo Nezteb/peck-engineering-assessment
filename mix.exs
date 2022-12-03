@@ -78,6 +78,7 @@ defmodule PeckEngineeringAssessment.MixProject do
       {:paginator, "~> 1.1.0"},
       {:nimble_csv, "~> 1.1"},
       {:timex, "~> 3.0"},
+      {:exvcr, "~> 0.13", only: :test},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]

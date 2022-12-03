@@ -124,7 +124,10 @@ defmodule PeckEngineeringAssessment.CsvImporter do
         food_truck
 
       {:error, error} ->
-        Logger.error("Error creating food truck from CSV with ID: #{location_id}, error: #{inspect(error.errors)}")
+        Logger.error(
+          "Error creating food truck from CSV with ID: #{location_id}, error: #{inspect(error.errors)}"
+        )
+
         nil
     end
   end
