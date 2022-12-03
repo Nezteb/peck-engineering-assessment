@@ -26,6 +26,9 @@ defmodule PeckEngineeringAssessment.CsvImporter do
         Logger.info("Created #{length(food_trucks)} food trucks from CSV")
         food_trucks
 
+      [] ->
+        Logger.warn("Zero food trucks imported from CSV")
+
       other ->
         Logger.warn("Unknown CSV import result: #{inspect(other)}")
         other
@@ -67,8 +70,6 @@ defmodule PeckEngineeringAssessment.CsvImporter do
           zip_codes,
           neighborhoods
         ] ->
-          Logger.info("Attempting CSV import for food truck with ID: #{location_id}")
-
           approved = parse_datetime(approved, "approved", "%m/%d/%Y %H:%M:%S %p")
           received = parse_datetime(received, "received", "%Y%m%d")
 
@@ -107,19 +108,23 @@ defmodule PeckEngineeringAssessment.CsvImporter do
             neighborhoods: neighborhoods
           }
           |> FoodTrucks.create_food_truck()
-          |> log_csv_food_truck_result()
+          |> log_csv_food_truck_result(location_id)
+
+        other ->
+          Logger.error("Unknown CSV row format: #{inspect(other)}")
+          nil
       end
     end)
   end
 
-  defp log_csv_food_truck_result(result) do
+  defp log_csv_food_truck_result(result, location_id) do
     case result do
       {:ok, food_truck} ->
-        Logger.info("Created food truck from CSV with ID: #{food_truck.location_id}")
+        Logger.info("Created food truck from CSV with ID: #{location_id}")
         food_truck
 
       {:error, error} ->
-        Logger.error("Error creating food truck from CSV with ID: #{inspect(error.errors)}")
+        Logger.error("Error creating food truck from CSV with ID: #{location_id}, error: #{inspect(error.errors)}")
         nil
     end
   end
