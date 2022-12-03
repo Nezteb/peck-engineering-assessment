@@ -51,7 +51,6 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
     latitude: "some updated latitude",
     location: "some updated location",
     location_description: "some updated location_description",
-    location_id: 43,
     longitude: "some updated longitude",
     lot: "some updated lot",
     neighborhoods: "some updated neighborhoods",
@@ -113,12 +112,11 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
   describe "create food_truck" do
     test "renders food_truck when data is valid", %{conn: conn} do
       conn = post(conn, Routes.food_truck_path(conn, :create), food_truck: @create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"location_id" => location_id} = json_response(conn, 201)["data"]
 
-      conn = get(conn, Routes.food_truck_path(conn, :show, id))
+      conn = get(conn, Routes.food_truck_path(conn, :show, location_id))
 
       assert %{
-               "id" => ^id,
                "address" => "some address",
                "applicant" => "some applicant",
                "approved" => "2022-11-30T21:11:00",
@@ -133,7 +131,7 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
                "latitude" => "some latitude",
                "location" => "some location",
                "location_description" => "some location_description",
-               "location_id" => 42,
+               "location_id" => ^location_id,
                "longitude" => "some longitude",
                "lot" => "some lot",
                "neighborhoods" => "some neighborhoods",
@@ -162,17 +160,16 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
 
     test "renders food_truck when data is valid", %{
       conn: conn,
-      food_truck: %FoodTruck{id: id} = food_truck
+      food_truck: %FoodTruck{location_id: location_id} = food_truck
     } do
       conn =
         put(conn, Routes.food_truck_path(conn, :update, food_truck), food_truck: @update_attrs)
 
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
+      assert %{"location_id" => ^location_id} = json_response(conn, 200)["data"]
 
-      conn = get(conn, Routes.food_truck_path(conn, :show, id))
+      conn = get(conn, Routes.food_truck_path(conn, :show, location_id))
 
       assert %{
-               "id" => ^id,
                "address" => "some updated address",
                "applicant" => "some updated applicant",
                "approved" => "2022-12-01T21:11:00",
@@ -187,7 +184,7 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckControllerTest do
                "latitude" => "some updated latitude",
                "location" => "some updated location",
                "location_description" => "some updated location_description",
-               "location_id" => 43,
+               "location_id" => ^location_id,
                "longitude" => "some updated longitude",
                "lot" => "some updated lot",
                "neighborhoods" => "some updated neighborhoods",

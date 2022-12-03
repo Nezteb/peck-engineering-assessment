@@ -12,7 +12,6 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckView do
 
   def render("food_truck.json", %{food_truck: food_truck}) do
     %{
-      id: food_truck.id,
       location_id: food_truck.location_id,
       applicant: food_truck.applicant,
       facility_type: food_truck.facility_type,

@@ -16,7 +16,7 @@ defmodule PeckEngineeringAssessmentWeb.Router do
 
   scope "/api", PeckEngineeringAssessmentWeb do
     pipe_through :api
-    resources "/food_trucks", FoodTruckController, except: [:new, :edit]
+    resources "/food_trucks", FoodTruckController, except: [:new, :edit], param: "location_id"
   end
 
   # Enables LiveDashboard only for development

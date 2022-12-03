@@ -3,7 +3,11 @@ defmodule PeckEngineeringAssessment.FoodTrucks.FoodTruck do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:location_id, :id, autogenerate: true}
+  @derive {Phoenix.Param, key: :location_id}
+
   schema "food_trucks" do
+    # field :location_id, :integer, primary_key: true
     field :address, :string
     field :applicant, :string
     field :approved, :naive_datetime
@@ -18,7 +22,6 @@ defmodule PeckEngineeringAssessment.FoodTrucks.FoodTruck do
     field :latitude, :string
     field :location, :string
     field :location_description, :string
-    field :location_id, :integer
     field :longitude, :string
     field :lot, :string
     field :neighborhoods, :string
@@ -72,35 +75,8 @@ defmodule PeckEngineeringAssessment.FoodTrucks.FoodTruck do
       :neighborhoods
     ])
     |> validate_required([
-      :location_id,
-      :applicant,
-      :facility_type,
-      :cnn,
-      :location_description,
-      :address,
-      :blocklot,
-      :block,
-      :lot,
-      :permit,
-      :status,
-      :food_items,
-      :x,
-      :y,
-      :latitude,
-      :longitude,
-      :schedule,
-      :days_hours,
-      :noi_sent,
-      :approved,
-      :received,
-      :prior_permit,
-      :expiration_date,
-      :location,
-      :fire_prevention_districts,
-      :police_districts,
-      :supervisor_districts,
-      :zip_codes,
-      :neighborhoods
+      :location_id
     ])
+    |> unique_constraint(:location_id)
   end
 end

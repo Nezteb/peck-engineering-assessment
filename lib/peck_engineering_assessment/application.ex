@@ -7,19 +7,7 @@ defmodule PeckEngineeringAssessment.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [
-      # Start the Ecto repository
-      PeckEngineeringAssessment.Repo,
-      # Start the Telemetry supervisor
-      PeckEngineeringAssessmentWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: PeckEngineeringAssessment.PubSub},
-      # Start the Endpoint (http/https)
-      PeckEngineeringAssessmentWeb.Endpoint,
-      # Start a worker by calling: PeckEngineeringAssessment.Worker.start_link(arg)
-      # {PeckEngineeringAssessment.Worker, arg}
-      {Finch, name: FinchHttpClient}
-    ]
+    children = Application.get_env(:peck_engineering_assessment, :children)
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

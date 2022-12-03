@@ -11,6 +11,7 @@ defmodule PeckEngineeringAssessment.FoodTrucksFixtures do
     {:ok, food_truck} =
       attrs
       |> Enum.into(%{
+        location_id: 42,
         address: "some address",
         applicant: "some applicant",
         approved: ~N[2022-11-30 21:11:00],
@@ -25,7 +26,6 @@ defmodule PeckEngineeringAssessment.FoodTrucksFixtures do
         latitude: "some latitude",
         location: "some location",
         location_description: "some location_description",
-        location_id: 42,
         longitude: "some longitude",
         lot: "some lot",
         neighborhoods: "some neighborhoods",

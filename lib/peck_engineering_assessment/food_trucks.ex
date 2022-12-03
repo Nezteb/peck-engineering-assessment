@@ -35,7 +35,7 @@ defmodule PeckEngineeringAssessment.FoodTrucks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_food_truck!(id), do: Repo.get!(FoodTruck, id)
+  def get_food_truck!(location_id), do: Repo.get!(FoodTruck, location_id)
 
   @doc """
   Creates a food_truck.

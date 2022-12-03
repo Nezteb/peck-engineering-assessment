@@ -7,8 +7,26 @@
 # General application configuration
 import Config
 
+config :peck_engineering_assessment, :children, [
+  # Start the Ecto repository
+  PeckEngineeringAssessment.Repo,
+  # Start the Telemetry supervisor
+  PeckEngineeringAssessmentWeb.Telemetry,
+  # Start the PubSub system
+  {Phoenix.PubSub, name: PeckEngineeringAssessment.PubSub},
+  # Start the Endpoint (http/https)
+  PeckEngineeringAssessmentWeb.Endpoint,
+  # Start a worker by calling: PeckEngineeringAssessment.Worker.start_link(arg)
+  # {PeckEngineeringAssessment.Worker, arg}
+  {Finch, name: FinchHttpClient},
+  {Task, fn -> PeckEngineeringAssessment.CsvImporter.import_food_trucks() end}
+]
+
 config :peck_engineering_assessment,
   ecto_repos: [PeckEngineeringAssessment.Repo]
+
+# config :peck_engineering_assessment, PeckEngineeringAssessment.Repo,
+#   migration_primary_key: [name: :location_id, type: :id]
 
 # Configures the endpoint
 config :peck_engineering_assessment, PeckEngineeringAssessmentWeb.Endpoint,
@@ -53,6 +71,8 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :tesla, :adapter, {Tesla.Adapter.Finch, name: FinchHttpClient}
+
+config :peck_engineering_assessment, food_trucks_url: "https://data.sfgov.org"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

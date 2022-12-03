@@ -20,13 +20,13 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    food_truck = FoodTrucks.get_food_truck!(id)
+  def show(conn, %{"location_id" => location_id}) do
+    food_truck = FoodTrucks.get_food_truck!(location_id)
     render(conn, "show.json", food_truck: food_truck)
   end
 
-  def update(conn, %{"id" => id, "food_truck" => food_truck_params}) do
-    food_truck = FoodTrucks.get_food_truck!(id)
+  def update(conn, %{"location_id" => location_id, "food_truck" => food_truck_params}) do
+    food_truck = FoodTrucks.get_food_truck!(location_id)
 
     with {:ok, %FoodTruck{} = food_truck} <-
            FoodTrucks.update_food_truck(food_truck, food_truck_params) do
@@ -34,8 +34,8 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    food_truck = FoodTrucks.get_food_truck!(id)
+  def delete(conn, %{"location_id" => location_id}) do
+    food_truck = FoodTrucks.get_food_truck!(location_id)
 
     with {:ok, %FoodTruck{}} <- FoodTrucks.delete_food_truck(food_truck) do
       send_resp(conn, :no_content, "")
