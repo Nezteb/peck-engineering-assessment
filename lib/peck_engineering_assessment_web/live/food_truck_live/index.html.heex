@@ -1,0 +1,95 @@
+<h1>Listing Food trucks</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.food_truck_index_path(@socket, :index)}>
+    <.live_component
+      module={PeckEngineeringAssessmentWeb.FoodTruckLive.FormComponent}
+      id={@food_truck.location_id || :new}
+      title={@page_title}
+      action={@live_action}
+      food_truck={@food_truck}
+      return_to={Routes.food_truck_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Applicant</th>
+      <th>Facility type</th>
+      <th>Cnn</th>
+      <th>Location description</th>
+      <th>Address</th>
+      <th>Blocklot</th>
+      <th>Block</th>
+      <th>Lot</th>
+      <th>Permit</th>
+      <th>Status</th>
+      <th>Food items</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Schedule</th>
+      <th>Days hours</th>
+      <th>Noi sent</th>
+      <th>Approved</th>
+      <th>Received</th>
+      <th>Prior permit</th>
+      <th>Expiration date</th>
+      <th>Location</th>
+      <th>Fire prevention districts</th>
+      <th>Police districts</th>
+      <th>Supervisor districts</th>
+      <th>Zip codes</th>
+      <th>Neighborhoods</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="food_trucks">
+    <%= for food_truck <- @food_trucks do %>
+      <tr id={"food_truck-#{food_truck.location_id}"}>
+        <td><%= food_truck.location_id %></td>
+        <td><%= food_truck.applicant %></td>
+        <td><%= food_truck.facility_type %></td>
+        <td><%= food_truck.cnn %></td>
+        <td><%= food_truck.location_description %></td>
+        <td><%= food_truck.address %></td>
+        <td><%= food_truck.blocklot %></td>
+        <td><%= food_truck.block %></td>
+        <td><%= food_truck.lot %></td>
+        <td><%= food_truck.permit %></td>
+        <td><%= food_truck.status %></td>
+        <td><%= food_truck.food_items %></td>
+        <td><%= food_truck.x %></td>
+        <td><%= food_truck.y %></td>
+        <td><%= food_truck.latitude %></td>
+        <td><%= food_truck.longitude %></td>
+        <td><%= food_truck.schedule %></td>
+        <td><%= food_truck.days_hours %></td>
+        <td><%= food_truck.noi_sent %></td>
+        <td><%= food_truck.approved %></td>
+        <td><%= food_truck.received %></td>
+        <td><%= food_truck.prior_permit %></td>
+        <td><%= food_truck.expiration_date %></td>
+        <td><%= food_truck.location %></td>
+        <td><%= food_truck.fire_prevention_districts %></td>
+        <td><%= food_truck.police_districts %></td>
+        <td><%= food_truck.supervisor_districts %></td>
+        <td><%= food_truck.zip_codes %></td>
+        <td><%= food_truck.neighborhoods %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.food_truck_show_path(@socket, :show, food_truck) %></span>
+          <span><%= live_patch "Edit", to: Routes.food_truck_index_path(@socket, :edit, food_truck) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: food_truck.location_id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Food truck", to: Routes.food_truck_index_path(@socket, :new) %></span>

@@ -1,0 +1,132 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="food_truck-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :location_id %>
+    <%= number_input f, :location_id %>
+    <%= error_tag f, :location_id %>
+  
+    <%= label f, :applicant %>
+    <%= text_input f, :applicant %>
+    <%= error_tag f, :applicant %>
+  
+    <%= label f, :facility_type %>
+    <%= text_input f, :facility_type %>
+    <%= error_tag f, :facility_type %>
+  
+    <%= label f, :cnn %>
+    <%= number_input f, :cnn %>
+    <%= error_tag f, :cnn %>
+  
+    <%= label f, :location_description %>
+    <%= text_input f, :location_description %>
+    <%= error_tag f, :location_description %>
+  
+    <%= label f, :address %>
+    <%= text_input f, :address %>
+    <%= error_tag f, :address %>
+  
+    <%= label f, :blocklot %>
+    <%= text_input f, :blocklot %>
+    <%= error_tag f, :blocklot %>
+  
+    <%= label f, :block %>
+    <%= text_input f, :block %>
+    <%= error_tag f, :block %>
+  
+    <%= label f, :lot %>
+    <%= text_input f, :lot %>
+    <%= error_tag f, :lot %>
+  
+    <%= label f, :permit %>
+    <%= text_input f, :permit %>
+    <%= error_tag f, :permit %>
+  
+    <%= label f, :status %>
+    <%= text_input f, :status %>
+    <%= error_tag f, :status %>
+  
+    <%= label f, :food_items %>
+    <%= text_input f, :food_items %>
+    <%= error_tag f, :food_items %>
+  
+    <%= label f, :x %>
+    <%= text_input f, :x %>
+    <%= error_tag f, :x %>
+  
+    <%= label f, :y %>
+    <%= text_input f, :y %>
+    <%= error_tag f, :y %>
+  
+    <%= label f, :latitude %>
+    <%= text_input f, :latitude %>
+    <%= error_tag f, :latitude %>
+  
+    <%= label f, :longitude %>
+    <%= text_input f, :longitude %>
+    <%= error_tag f, :longitude %>
+  
+    <%= label f, :schedule %>
+    <%= text_input f, :schedule %>
+    <%= error_tag f, :schedule %>
+  
+    <%= label f, :days_hours %>
+    <%= text_input f, :days_hours %>
+    <%= error_tag f, :days_hours %>
+  
+    <%= label f, :noi_sent %>
+    <%= text_input f, :noi_sent %>
+    <%= error_tag f, :noi_sent %>
+  
+    <%= label f, :approved %>
+    <%= datetime_select f, :approved %>
+    <%= error_tag f, :approved %>
+  
+    <%= label f, :received %>
+    <%= datetime_select f, :received %>
+    <%= error_tag f, :received %>
+  
+    <%= label f, :prior_permit %>
+    <%= number_input f, :prior_permit %>
+    <%= error_tag f, :prior_permit %>
+  
+    <%= label f, :expiration_date %>
+    <%= datetime_select f, :expiration_date %>
+    <%= error_tag f, :expiration_date %>
+  
+    <%= label f, :location %>
+    <%= text_input f, :location %>
+    <%= error_tag f, :location %>
+  
+    <%= label f, :fire_prevention_districts %>
+    <%= text_input f, :fire_prevention_districts %>
+    <%= error_tag f, :fire_prevention_districts %>
+  
+    <%= label f, :police_districts %>
+    <%= text_input f, :police_districts %>
+    <%= error_tag f, :police_districts %>
+  
+    <%= label f, :supervisor_districts %>
+    <%= text_input f, :supervisor_districts %>
+    <%= error_tag f, :supervisor_districts %>
+  
+    <%= label f, :zip_codes %>
+    <%= text_input f, :zip_codes %>
+    <%= error_tag f, :zip_codes %>
+  
+    <%= label f, :neighborhoods %>
+    <%= text_input f, :neighborhoods %>
+    <%= error_tag f, :neighborhoods %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

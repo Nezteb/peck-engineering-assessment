@@ -80,7 +80,7 @@ Rules for myself: (no promises though due to time)
 
 To set up the schema, we'll run:
 ```bash
-mix phx.gen.json Food FoodTruck food_trucks \
+mix phx.gen.live FoodTrucks FoodTruck food_trucks \
     location_id:integer \
     applicant:string \
     facility_type:string \

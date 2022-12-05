@@ -1,0 +1,166 @@
+<h1>Show Food truck</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.food_truck_show_path(@socket, :show, @food_truck)}>
+    <.live_component
+      module={PeckEngineeringAssessmentWeb.FoodTruckLive.FormComponent}
+      id={@food_truck.location_id}
+      title={@page_title}
+      action={@live_action}
+      food_truck={@food_truck}
+      return_to={Routes.food_truck_show_path(@socket, :show, @food_truck)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @food_truck.location_id %>
+  </li>
+
+  <li>
+    <strong>Applicant:</strong>
+    <%= @food_truck.applicant %>
+  </li>
+
+  <li>
+    <strong>Facility type:</strong>
+    <%= @food_truck.facility_type %>
+  </li>
+
+  <li>
+    <strong>Cnn:</strong>
+    <%= @food_truck.cnn %>
+  </li>
+
+  <li>
+    <strong>Location description:</strong>
+    <%= @food_truck.location_description %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= @food_truck.address %>
+  </li>
+
+  <li>
+    <strong>Blocklot:</strong>
+    <%= @food_truck.blocklot %>
+  </li>
+
+  <li>
+    <strong>Block:</strong>
+    <%= @food_truck.block %>
+  </li>
+
+  <li>
+    <strong>Lot:</strong>
+    <%= @food_truck.lot %>
+  </li>
+
+  <li>
+    <strong>Permit:</strong>
+    <%= @food_truck.permit %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @food_truck.status %>
+  </li>
+
+  <li>
+    <strong>Food items:</strong>
+    <%= @food_truck.food_items %>
+  </li>
+
+  <li>
+    <strong>X:</strong>
+    <%= @food_truck.x %>
+  </li>
+
+  <li>
+    <strong>Y:</strong>
+    <%= @food_truck.y %>
+  </li>
+
+  <li>
+    <strong>Latitude:</strong>
+    <%= @food_truck.latitude %>
+  </li>
+
+  <li>
+    <strong>Longitude:</strong>
+    <%= @food_truck.longitude %>
+  </li>
+
+  <li>
+    <strong>Schedule:</strong>
+    <%= @food_truck.schedule %>
+  </li>
+
+  <li>
+    <strong>Days hours:</strong>
+    <%= @food_truck.days_hours %>
+  </li>
+
+  <li>
+    <strong>Noi sent:</strong>
+    <%= @food_truck.noi_sent %>
+  </li>
+
+  <li>
+    <strong>Approved:</strong>
+    <%= @food_truck.approved %>
+  </li>
+
+  <li>
+    <strong>Received:</strong>
+    <%= @food_truck.received %>
+  </li>
+
+  <li>
+    <strong>Prior permit:</strong>
+    <%= @food_truck.prior_permit %>
+  </li>
+
+  <li>
+    <strong>Expiration date:</strong>
+    <%= @food_truck.expiration_date %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @food_truck.location %>
+  </li>
+
+  <li>
+    <strong>Fire prevention districts:</strong>
+    <%= @food_truck.fire_prevention_districts %>
+  </li>
+
+  <li>
+    <strong>Police districts:</strong>
+    <%= @food_truck.police_districts %>
+  </li>
+
+  <li>
+    <strong>Supervisor districts:</strong>
+    <%= @food_truck.supervisor_districts %>
+  </li>
+
+  <li>
+    <strong>Zip codes:</strong>
+    <%= @food_truck.zip_codes %>
+  </li>
+
+  <li>
+    <strong>Neighborhoods:</strong>
+    <%= @food_truck.neighborhoods %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.food_truck_show_path(@socket, :edit, @food_truck), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.food_truck_index_path(@socket, :index) %></span>
