@@ -5,7 +5,9 @@ The following build/run instructions assume you have Elixir/Erlang installed on 
 - `mix ecto.setup`
 - `mix phx.server`
 - Open `http://localhost:4000/food_trucks` to see all the available food trucks
+  ![Food truck live view CRUD page](./screenshots/food-truck-live-view.png)
 - Open `http://localhost:4000/swaggerui` to see the OpenAPI specification served via SwaggerUI
+  ![Food truck OpenAPI spec with SwaggerUI](./screenshots/food-truck-swagger-ui.png)
 
 TODO:
 - ✅ Boilerplate Phoenix app
