@@ -22,10 +22,10 @@ defmodule PeckEngineeringAssessment.Repo.Migrations.CreateFoodTrucks do
       add :schedule, :string, null: true
       add :days_hours, :string, null: true
       add :noi_sent, :string, null: true
-      add :approved, :naive_datetime, null: true
-      add :received, :naive_datetime, null: true
+      add :approved, :utc_datetime, null: true
+      add :received, :utc_datetime, null: true
       add :prior_permit, :integer, null: true
-      add :expiration_date, :naive_datetime, null: true
+      add :expiration_date, :utc_datetime, null: true
       add :location, :string, null: true
       add :fire_prevention_districts, :string, null: true
       add :police_districts, :string, null: true

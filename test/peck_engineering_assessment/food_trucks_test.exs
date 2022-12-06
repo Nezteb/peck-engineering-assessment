@@ -54,12 +54,12 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
       valid_attrs = %{
         address: "some address",
         applicant: "some applicant",
-        approved: ~N[2022-11-30 21:11:00],
+        approved: ~U[2022-11-30 21:11:00Z],
         block: "some block",
         blocklot: "some blocklot",
         cnn: 42,
         days_hours: "some days_hours",
-        expiration_date: ~N[2022-11-30 21:11:00],
+        expiration_date: ~U[2022-11-30 21:11:00Z],
         facility_type: "some facility_type",
         fire_prevention_districts: "some fire_prevention_districts",
         food_items: "some food_items",
@@ -74,7 +74,7 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
         permit: "some permit",
         police_districts: "some police_districts",
         prior_permit: 42,
-        received: ~N[2022-11-30 21:11:00],
+        received: ~U[2022-11-30 21:11:00Z],
         schedule: "some schedule",
         status: "some status",
         supervisor_districts: "some supervisor_districts",
@@ -86,12 +86,12 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
       assert {:ok, %FoodTruck{} = food_truck} = FoodTrucks.create_food_truck(valid_attrs)
       assert food_truck.address == "some address"
       assert food_truck.applicant == "some applicant"
-      assert food_truck.approved == ~N[2022-11-30 21:11:00]
+      assert food_truck.approved == ~U[2022-11-30 21:11:00Z]
       assert food_truck.block == "some block"
       assert food_truck.blocklot == "some blocklot"
       assert food_truck.cnn == 42
       assert food_truck.days_hours == "some days_hours"
-      assert food_truck.expiration_date == ~N[2022-11-30 21:11:00]
+      assert food_truck.expiration_date == ~U[2022-11-30 21:11:00Z]
       assert food_truck.facility_type == "some facility_type"
       assert food_truck.fire_prevention_districts == "some fire_prevention_districts"
       assert food_truck.food_items == "some food_items"
@@ -106,7 +106,7 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
       assert food_truck.permit == "some permit"
       assert food_truck.police_districts == "some police_districts"
       assert food_truck.prior_permit == 42
-      assert food_truck.received == ~N[2022-11-30 21:11:00]
+      assert food_truck.received == ~U[2022-11-30 21:11:00Z]
       assert food_truck.schedule == "some schedule"
       assert food_truck.status == "some status"
       assert food_truck.supervisor_districts == "some supervisor_districts"
@@ -125,12 +125,12 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
       update_attrs = %{
         address: "some updated address",
         applicant: "some updated applicant",
-        approved: ~N[2022-12-01 21:11:00],
+        approved: ~U[2022-12-01 21:11:00Z],
         block: "some updated block",
         blocklot: "some updated blocklot",
         cnn: 43,
         days_hours: "some updated days_hours",
-        expiration_date: ~N[2022-12-01 21:11:00],
+        expiration_date: ~U[2022-12-01 21:11:00Z],
         facility_type: "some updated facility_type",
         fire_prevention_districts: "some updated fire_prevention_districts",
         food_items: "some updated food_items",
@@ -144,7 +144,7 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
         permit: "some updated permit",
         police_districts: "some updated police_districts",
         prior_permit: 43,
-        received: ~N[2022-12-01 21:11:00],
+        received: ~U[2022-12-01 21:11:00Z],
         schedule: "some updated schedule",
         status: "some updated status",
         supervisor_districts: "some updated supervisor_districts",
@@ -158,12 +158,12 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
 
       assert food_truck.address == "some updated address"
       assert food_truck.applicant == "some updated applicant"
-      assert food_truck.approved == ~N[2022-12-01 21:11:00]
+      assert food_truck.approved == ~U[2022-12-01 21:11:00Z]
       assert food_truck.block == "some updated block"
       assert food_truck.blocklot == "some updated blocklot"
       assert food_truck.cnn == 43
       assert food_truck.days_hours == "some updated days_hours"
-      assert food_truck.expiration_date == ~N[2022-12-01 21:11:00]
+      assert food_truck.expiration_date == ~U[2022-12-01 21:11:00Z]
       assert food_truck.facility_type == "some updated facility_type"
       assert food_truck.fire_prevention_districts == "some updated fire_prevention_districts"
       assert food_truck.food_items == "some updated food_items"
@@ -177,7 +177,7 @@ defmodule PeckEngineeringAssessment.FoodTrucksTest do
       assert food_truck.permit == "some updated permit"
       assert food_truck.police_districts == "some updated police_districts"
       assert food_truck.prior_permit == 43
-      assert food_truck.received == ~N[2022-12-01 21:11:00]
+      assert food_truck.received == ~U[2022-12-01 21:11:00Z]
       assert food_truck.schedule == "some updated schedule"
       assert food_truck.status == "some updated status"
       assert food_truck.supervisor_districts == "some updated supervisor_districts"

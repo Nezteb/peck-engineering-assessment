@@ -10,12 +10,12 @@ defmodule PeckEngineeringAssessment.FoodTrucks.FoodTruck do
     # field :location_id, :integer, primary_key: true
     field :address, :string
     field :applicant, :string
-    field :approved, :naive_datetime
+    field :approved, :utc_datetime
     field :block, :string
     field :blocklot, :string
     field :cnn, :integer
     field :days_hours, :string
-    field :expiration_date, :naive_datetime
+    field :expiration_date, :utc_datetime
     field :facility_type, :string
     field :fire_prevention_districts, :string
     field :food_items, :string
@@ -29,7 +29,7 @@ defmodule PeckEngineeringAssessment.FoodTrucks.FoodTruck do
     field :permit, :string
     field :police_districts, :string
     field :prior_permit, :integer
-    field :received, :naive_datetime
+    field :received, :utc_datetime
     field :schedule, :string
     field :status, :string
     field :supervisor_districts, :string

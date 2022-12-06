@@ -72,7 +72,7 @@ defmodule PeckEngineeringAssessment.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:open_api_spex, "~> 3.13"},
+      {:open_api_spex, "~> 3.16"},
       {:tesla, "~> 1.4"},
       {:finch, "~> 0.13"},
       {:paginator, "~> 1.1.0"},

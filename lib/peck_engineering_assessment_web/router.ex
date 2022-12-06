@@ -12,22 +12,33 @@ defmodule PeckEngineeringAssessmentWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug OpenApiSpex.Plug.PutApiSpec, module: PeckEngineeringAssessmentWeb.ApiSpec
   end
 
-  scope "/api", PeckEngineeringAssessmentWeb do
+  scope "/api" do
     pipe_through :api
-    resources "/food_trucks", FoodTruckController, param: "location_id"
+
+    resources "/food_trucks", PeckEngineeringAssessmentWeb.FoodTruckController,
+      except: [:new, :edit],
+      param: "location_id"
+
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
 
-  scope "/", PeckEngineeringAssessmentWeb do
+  scope "/" do
     pipe_through :browser
 
-    live "/food_trucks", FoodTruckLive.Index, :index
-    live "/food_trucks/new", FoodTruckLive.Index, :new
-    live "/food_trucks/:location_id/edit", FoodTruckLive.Index, :edit
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
 
-    live "/food_trucks/:location_id", FoodTruckLive.Show, :show
-    live "/food_trucks/:location_id/show/edit", FoodTruckLive.Show, :edit
+    live "/food_trucks", PeckEngineeringAssessmentWeb.FoodTruckLive.Index, :index
+    live "/food_trucks/new", PeckEngineeringAssessmentWeb.FoodTruckLive.Index, :new
+    live "/food_trucks/:location_id/edit", PeckEngineeringAssessmentWeb.FoodTruckLive.Index, :edit
+
+    live "/food_trucks/:location_id", PeckEngineeringAssessmentWeb.FoodTruckLive.Show, :show
+
+    live "/food_trucks/:location_id/show/edit",
+         PeckEngineeringAssessmentWeb.FoodTruckLive.Show,
+         :edit
   end
 
   # Enables LiveDashboard only for development
