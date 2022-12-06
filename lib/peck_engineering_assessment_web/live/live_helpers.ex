@@ -1,4 +1,5 @@
 defmodule PeckEngineeringAssessmentWeb.LiveHelpers do
+  @moduledoc false
   import Phoenix.LiveView
   import Phoenix.LiveView.Helpers
 
@@ -15,7 +16,7 @@ defmodule PeckEngineeringAssessmentWeb.LiveHelpers do
       <.modal return_to={Routes.food_truck_index_path(@socket, :index)}>
         <.live_component
           module={PeckEngineeringAssessmentWeb.FoodTruckLive.FormComponent}
-          id={@food_truck.id || :new}
+          id={@food_truck.location_id || :new}
           title={@page_title}
           action={@live_action}
           return_to={Routes.food_truck_index_path(@socket, :index)}

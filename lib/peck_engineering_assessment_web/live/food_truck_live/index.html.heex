@@ -85,7 +85,7 @@
         <td>
           <span><%= live_redirect "Show", to: Routes.food_truck_show_path(@socket, :show, food_truck) %></span>
           <span><%= live_patch "Edit", to: Routes.food_truck_index_path(@socket, :edit, food_truck) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: food_truck.location_id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_location_id: food_truck.location_id, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>
     <% end %>

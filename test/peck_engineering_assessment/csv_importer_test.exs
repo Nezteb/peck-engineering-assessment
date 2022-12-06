@@ -12,7 +12,7 @@ defmodule PeckEngineeringAssessment.CsvImporterTest do
   describe "csv_importer" do
     test "import succeeds" do
       use_cassette "import_food_trucks" do
-        assert length(CsvImporter.import_food_trucks) == 482
+        assert length(CsvImporter.import_food_trucks()) == 482
       end
     end
   end

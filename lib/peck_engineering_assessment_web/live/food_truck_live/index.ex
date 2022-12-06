@@ -33,7 +33,7 @@ defmodule PeckEngineeringAssessmentWeb.FoodTruckLive.Index do
   end
 
   @impl true
-  def handle_event("delete", %{"location_id" => location_id}, socket) do
+  def handle_event("delete", %{"location-id" => location_id}, socket) do
     food_truck = FoodTrucks.get_food_truck!(location_id)
     {:ok, _} = FoodTrucks.delete_food_truck(food_truck)
 

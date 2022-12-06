@@ -1,5 +1,11 @@
 # Noah Betzen: Peck Engineering Assessment
 
+The following build/run instructions assume you have Elixir/Erlang installed on your machine and have built/run other Elixir/Phoenix projects on your machine before:
+- `mix deps.get`
+- `mix ecto.setup`
+- `mix phx.server`
+- Open `http://localhost:4000/food_trucks` to see all the available food trucks
+
 TODO:
 - ✅ Boilerplate Phoenix app
 - ✅ Schema/migrations for food truck data (Postgres)
@@ -7,8 +13,8 @@ TODO:
 - ✅ CSV importer (ignoring duplicates)
 - ✅ REST resource endpoints for foodtrucks
 - ✅ Tests with `exvcr`
+- ✅ Basic CRUD LiveView UI for foodtrucks
 - 🔘 OpenAPI spec with `open_api_spex`
-- 🔘 Basic CRUD LiveView UI for foodtrucks
 
 Rules for myself: (no promises though due to time)
 - Run `mix format && mix lint && mix test` often
